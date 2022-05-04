@@ -4,8 +4,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 from datetime import date, datetime
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 def test_marketing_calendar(driver):
@@ -76,17 +74,13 @@ def test_add_team_member(driver):
     settings_page = SettingsPage(driver)
     sleep(2)
     driver.execute_script("arguments[0].click();", settings_page.add_team_member_plus)
-    add_team_member_input = driver.find_elements(By.ID, "email")[1]
-    sleep(2)
-    add_team_member_input.click()
-    driver.execute_script("arguments[0].value= 'qwe@qwe.com'", add_team_member_input)
+    settings_page.add_team_member_input.click()
+    driver.execute_script("arguments[0].value= 'qwe@qwe.com'", settings_page.add_team_member_input)
     settings_page.add_team_member_submit.click()
     driver.refresh()
     sleep(2)
     assert "qwe@qwe.com" in settings_page.team_member_block.text
-    trash = driver.find_element(By.CLASS_NAME, "team-form__trash-btn")
-    trash.click()
-    sleep(2)
+    settings_page.team_member_trash_icon.click()
     settings_page.team_member_confirm_remove.click()
     driver.refresh()
     sleep(2)

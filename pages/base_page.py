@@ -14,21 +14,21 @@ class BasePage:
     def open(self):
         raise NotImplementedError
 
-    def find_element(self, *args):
-        by, val = args[0]
-        return self.driver.find_element(by, val)
+    # def find_element(self, *args):
+    #     by, val = args[0]
+    #     return self.driver.find_element(by, val)
 
-    def find_elements(self, *args):
-        by, val = args[0]
-        return self.driver.find_elements(by, val)
+    # def find_elements(self, *args):
+    #     by, val = args[0]
+    #     return self.driver.find_elements(by, val)
 
-    # def find_element(self, locator, time=10):
-    #     return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
-    #                                                   message=f"Can't find element by locator {locator}")
-    #
-    # def find_elements(self, locator, time=10):
-    #     return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
-    #                                                   message=f"Can't find elements by locator {locator}")
+    def find_element(self, locator, time=10):
+        return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
+                                                      message=f"Can't find element by locator {locator}")
+
+    def find_elements(self, locator, time=10):
+        return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
+                                                      message=f"Can't find elements by locator {locator}")
 
     @property
     def expand_sidebar(self):

@@ -8,10 +8,11 @@ calendar_input_icon = (By.CLASS_NAME, "calendar-input__icon")
 calendar_input = (By.CLASS_NAME, "custom-date-picker__input")
 save_buttons = (By.CLASS_NAME, "settings-pg__save-btn")
 notification_campaign_started = (By.ID, "campaignStarted")
-add_team_member_plus = (By.CLASS_NAME, "team-form__add-user")
-# add_team_member_input = (By.ID, "email")
+add_team_member_plus_icon = (By.CLASS_NAME, "team-form__add-user")
+add_team_member_input = (By.ID, "email")
 add_team_member_submit = (By.CLASS_NAME, "team-form__submit-icon")
 team_member_block = (By.CLASS_NAME, "settings-pg__team-block")
+team_member_trash_icon = (By.CLASS_NAME, "team-form__trash-btn")
 team_member_confirm_remove = (By.CSS_SELECTOR, "body > div:nth-child(12) > div > div > div.confirmation-modal__action-block > button.custom-button.confirmation-modal__btn.primary")
 
 
@@ -54,11 +55,11 @@ class SettingsPage(BasePage):
 
     @property
     def add_team_member_plus(self):
-        return self.find_element(add_team_member_plus)
+        return self.find_element(add_team_member_plus_icon)
 
-    # @property
-    # def add_team_member_input(self):
-    #     return self.find_elements(add_team_member_input)[1]
+    @property
+    def add_team_member_input(self):
+        return self.find_elements(add_team_member_input)[1]
 
     @property
     def add_team_member_submit(self):
@@ -67,6 +68,10 @@ class SettingsPage(BasePage):
     @property
     def team_member_block(self):
         return self.find_element(team_member_block)
+
+    @property
+    def team_member_trash_icon(self):
+        return self.find_element(team_member_trash_icon)
 
     @property
     def team_member_confirm_remove(self):

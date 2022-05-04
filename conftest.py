@@ -10,7 +10,6 @@ def driver():
     options = Options()
     options.add_argument('window-size=1920,1080')
     driver = webdriver.Chrome(options=options)
-    # driver = webdriver.Firefox()
     driver.implicitly_wait(10)
     login_page = LoginPage(driver)
     login_page.open_login_page()
